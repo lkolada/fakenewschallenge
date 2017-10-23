@@ -2,7 +2,8 @@
 Solving problem of text classification from Fake News Challenge
 Fake News Challenge
 
-1. Problem definition:
+1. Problem definition
+
 This project was based on Fake News Challenge competition. The problem description is depicted by the organizers:
 "The goal of the Fake News Challenge is to explore how artificial intelligence technologies, particularly machine learning and natural language processing, might be leveraged to combat the fake news problem. We believe that these AI technologies hold promise for significantly automating parts of the procedure human fact checkers use today to determine if a story is real or a hoax."
 
@@ -13,6 +14,7 @@ Discusses: The body text discuss the same topic as the headline, but does not ta
 Unrelated: The body text discusses a different topic than the headline"
 
 2. Data description
+
 The data was already split on train and test sets. Moreover, the article bodies and headlines were delivered also in separate files.
 
 In total train set consisted of 49972 observations. The classes in train sets were as follow:
@@ -28,6 +30,7 @@ The composition of test set (25413 observations) was:
 - disagree: 697 (3.0%)
 
 3. Data Processing
+
 There were several steps of data manipulation before it was put into the model.
 Firstly, all signs in headlines and article bodies apart from letters (capital and small) were removed. Secondly, all the texts were tokenized. Thirdly, all tokens were turned into lowercase. Finally, stop words were removed. Some other data manipulation techniques (such as stemming or lemmatizing) were tried, but they didn't improve the scoring.
 
@@ -43,6 +46,7 @@ I fitted TfidfVectorizer with a list of unique headlines and bodies from train s
 Thus obtained matrix is then passed as an input to classifiers.
 
 4. Model
+
 8 algorithms have been tested that support multiclass classification. For each model I calculated:
 
 - Accuracy
