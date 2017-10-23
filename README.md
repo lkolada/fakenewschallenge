@@ -16,18 +16,16 @@ Unrelated: The body text discusses a different topic than the headline"
 The data was already split on train and test sets. Moreover, the article bodies and headlines were delivered also in separate files.
 
 In total train set consisted of 49972 observations. The classes in train sets were as follow:
-           count  %counts
-unrelated  36545     73.0
-agree       3678      7.0
-disagree     840      2.0
-discuss     8909     18.0
+- unrelated: 36545 (73.0%)
+- agree: 3678 (7.0%)
+- disagree: 840 (2.0%)
+- discuss: 8909 (18.0%)
 
 The composition of test set (25413 observations) was:
-           count  %counts
-unrelated  18349     72.0
-agree       1903      7.0
-discuss     4464     18.0
-disagree     697      3.0
+- unrelated: 18349 (72.0%)
+- agree: 1903 (7.0%)
+- discuss: 4464 (18.0%)
+- disagree: 697 (3.0%)
 
 3. Data Processing
 There were several steps of data manipulation before it was put into the model.
@@ -47,14 +45,13 @@ Thus obtained matrix is then passed as an input to classifiers.
 4. Model
 8 algorithms have been tested that support multiclass classification. For each model I calculated:
 
-Accuracy
-F1 score weighted
-F1 score, class Agree
-F1 score, class Disagree
-F1 score, class Discuss
-F1 score, class Unrelated
-Time (in minutes)
-
+- Accuracy
+- F1 score weighted
+- F1 score, class Agree
+- F1 score, class Disagree
+- F1 score, class Discuss
+- F1 score, class Unrelated
+- Time (in minutes)
 
 The next step was running Voting Classifier in order to optimise results. For Voting Classifier I choose these models which have in general high accuracy, but also they have relatively good F1 scores on other classes than Unrelated. Therefore I choose:
 - Linear SVC (42% on class Agree and 61% on Discuss)
