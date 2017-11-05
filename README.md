@@ -1,13 +1,12 @@
 # fakenewschallenge
 Solving problem of text classification from Fake News Challenge
-Fake News Challenge
 
 1. Problem definition
 
 This project was based on Fake News Challenge competition. The problem description is depicted by the organizers:
 "The goal of the Fake News Challenge is to explore how artificial intelligence technologies, particularly machine learning and natural language processing, might be leveraged to combat the fake news problem. We believe that these AI technologies hold promise for significantly automating parts of the procedure human fact checkers use today to determine if a story is real or a hoax."
 
-To be more specific - the task of this challenge was text classification. The text classification was based on the relation between article headline and article body. There 4 possible classes. From the organizers website:
+To be more specific - the task of this challenge was text classification. The text classification was based on the relation between article headline and article body. There are 4 possible classes. From the organizers website:
 "Agrees: The body text agrees with the headline.
 Disagrees: The body text disagrees with the headline.
 Discusses: The body text discuss the same topic as the headline, but does not take a position
@@ -17,16 +16,16 @@ Unrelated: The body text discusses a different topic than the headline"
 
 The data was already split on train and test sets. Moreover, the article bodies and headlines were delivered also in separate files.
 
-In total train set consisted of 49972 observations. The classes in train sets were as follow:
+In total train set consisted of 49972 observations. The class distribution in train set is as follows:
 - unrelated: 36545 (73.0%)
+- discuss: 8909 (18.0%)
 - agree: 3678 (7.0%)
 - disagree: 840 (2.0%)
-- discuss: 8909 (18.0%)
 
 The composition of test set (25413 observations) was:
 - unrelated: 18349 (72.0%)
-- agree: 1903 (7.0%)
 - discuss: 4464 (18.0%)
+- agree: 1903 (7.0%)
 - disagree: 697 (3.0%)
 
 3. Data Processing
@@ -55,7 +54,7 @@ Thus obtained matrix is then passed as an input to classifiers.
 - F1 score, class Disagree
 - F1 score, class Discuss
 - F1 score, class Unrelated
-- Time (in minutes)
+- Time of fitting the model (in minutes)
 
 The next step was running Voting Classifier in order to optimise results. For Voting Classifier I choose these models which have in general high accuracy, but also they have relatively good F1 scores on other classes than Unrelated. Therefore I choose:
 - Linear SVC (42% on class Agree and 61% on Discuss)
