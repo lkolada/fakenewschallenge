@@ -28,6 +28,13 @@ Article (Body ID: 1403):
 The data was already split on train and test sets. Moreover, the article bodies and headlines were delivered also in separate files.
 
 In total train set consisted of 49972 observations. The class distribution in train set is as follows:
+| Class | Count | %Count |
+| ----------- | ----------- | ----------- |
+| unrelated | 36545 | 73% |
+| discuss | 8909 | 18% |
+| agree | 3678 | 7% |
+| disagree | 840 | 2% |
+
 - unrelated: 36545 (73.0%)
 - discuss: 8909 (18.0%)
 - agree: 3678 (7.0%)
