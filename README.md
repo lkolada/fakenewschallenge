@@ -12,6 +12,17 @@ Disagrees: The body text disagrees with the headline.
 Discusses: The body text discuss the same topic as the headline, but does not take a position
 Unrelated: The body text discusses a different topic than the headline"
 
+The examples of classes can be found below.
+
+Article (Body ID: 1403):
+"Reports that Comcast will deny Internet service to users of the Tor Internet browser are false, the company says in a new blog post. The browser lets users surf the web with a higher degree of anonymity, making it more difficult for hackers (or the government) to follow them around the Internet.\n\nComcast’s Jason Livingood wrote in today’s post:\n\nComcast is not asking customers to stop using Tor, or any other browser for that matter. We have no policy against Tor, or any other browser or software. (...)"
+
+* Agree: 'Comcast Says You Can Keep Your Tor'
+* Disagree: 'Comcast blocks Tor'
+* Discuss: 'Comcast Declares War on Tor?'
+* Unrelated: 'Apple Media Event Rumored for Late February, Apple Watch and 12" MacBook Air Likely Topics [Updated]'
+
+
 2. Data description
 
 The data was already split on train and test sets. Moreover, the article bodies and headlines were delivered also in separate files.
@@ -28,6 +39,10 @@ The composition of test set (25413 observations) was:
 - agree: 1903 (7.0%)
 - disagree: 697 (3.0%)
 
+It turns out that one article body can be used for several headlines. Mostly for class 'unrelated', where headline doesn't fit article body. Nevertheless, there are also cases where one article body stands for one headline, but there also cases where one article body stands for almost 200 headlines
+
+For that reason in data processing I use only unique headlines and article bodies. I do that in order to avoid bias in favour of words which appear in headlines and article bodies which are repeated more often than the others.
+
 3. Data Processing
 
 There were several steps of data manipulation before it was put into the model.
@@ -40,6 +55,8 @@ The next steps were based on UCL's model for Fake News Challenge. For train and 
    * Similarly I calculated TF_IDF_h and TF_IDF_b vectors
    * I calculated cosine similarity value <cos_value> of TF_IDF_h and TF_IDF_b vectors
    * Finally I squeezed TF_h, TF_b, <cos_value> to the one vector of a dim 2 * n_vocabulary + 1.
+   
+For the analysis we will use only part of vocabulary. Different sizes have been tested. 1000 words turned out to produce significantly lower results in classification. The increase to 3000 didn't improve classification significantly, yet time of fitting models was notably longer. Therefore, I decided to choose 2000 words which is a balance between accuracy and performance. . 
 
 I fitted TfidfVectorizer with a list of unique headlines and bodies from train set when process both: train and test sets.
 Thus obtained matrix is then passed as an input to classifiers.
