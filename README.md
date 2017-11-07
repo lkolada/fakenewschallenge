@@ -1,7 +1,7 @@
 # fakenewschallenge
 Solving problem of text classification from Fake News Challenge
 
-1. Problem definition
+## 1. Problem definition
 
 This project was based on Fake News Challenge competition. The problem description is depicted by the organizers:
 "The goal of the Fake News Challenge is to explore how artificial intelligence technologies, particularly machine learning and natural language processing, might be leveraged to combat the fake news problem. We believe that these AI technologies hold promise for significantly automating parts of the procedure human fact checkers use today to determine if a story is real or a hoax."
@@ -15,7 +15,7 @@ Unrelated: The body text discusses a different topic than the headline"
 The examples of classes can be found below.
 
 Article (Body ID: 1403):
-"Reports that Comcast will deny Internet service to users of the Tor Internet browser are false, the company says in a new blog post. The browser lets users surf the web with a higher degree of anonymity, making it more difficult for hackers (or the government) to follow them around the Internet.\n\nComcast’s Jason Livingood wrote in today’s post:\n\nComcast is not asking customers to stop using Tor, or any other browser for that matter. We have no policy against Tor, or any other browser or software. (...)"
+>Reports that Comcast will deny Internet service to users of the Tor Internet browser are false, the company says in a new blog post. The browser lets users surf the web with a higher degree of anonymity, making it more difficult for hackers (or the government) to follow them around the Internet.\n\nComcast’s Jason Livingood wrote in today’s post:\n\nComcast is not asking customers to stop using Tor, or any other browser for that matter. We have no policy against Tor, or any other browser or software. (...)
 
 * Agree: 'Comcast Says You Can Keep Your Tor'
 * Disagree: 'Comcast blocks Tor'
@@ -23,7 +23,7 @@ Article (Body ID: 1403):
 * Unrelated: 'Apple Media Event Rumored for Late February, Apple Watch and 12" MacBook Air Likely Topics [Updated]'
 
 
-2. Data description
+## 2. Data description
 
 The data was already split on train and test sets. Moreover, the article bodies and headlines were delivered also in separate files.
 
@@ -43,7 +43,7 @@ It turns out that one article body can be used for several headlines. Mostly for
 
 For that reason in data processing I use only unique headlines and article bodies. I do that in order to avoid bias in favour of words which appear in headlines and article bodies which are repeated more often than the others.
 
-3. Data Processing
+## 3. Data Processing
 
 There were several steps of data manipulation before it was put into the model.
 Firstly, all signs in headlines and article bodies apart from letters (capital and small) were removed. Secondly, all the texts were tokenized. Thirdly, all tokens were turned into lowercase. Finally, stop words were removed. Some other data manipulation techniques (such as stemming or lemmatizing) were tried, but they didn't improve the scoring.
@@ -61,7 +61,7 @@ For the analysis we will use only part of vocabulary. Different sizes have been 
 I fitted TfidfVectorizer with a list of unique headlines and bodies from train set when process both: train and test sets.
 Thus obtained matrix is then passed as an input to classifiers.
 
-4. Model
+## 4. Model
 
 8 algorithms have been tested that support multiclass classification. For each model I calculated:
 
